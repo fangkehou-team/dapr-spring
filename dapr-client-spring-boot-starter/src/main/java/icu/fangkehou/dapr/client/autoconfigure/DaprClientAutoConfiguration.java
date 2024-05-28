@@ -30,13 +30,12 @@ import io.dapr.client.DaprPreviewClient;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
-import java.util.concurrent.TimeoutException;
 
 /**
  * The autoconfiguration used by Spring-Boot that contains all beans to create and inject dapr clients into beans.
  * <p>
- * Dapr Java SDK currently has two types of Client: DaprClient and DaprPreviewClient, and both of them contains some important methods,
- * so we will create them all.
+ * Dapr Java SDK currently has two types of Client: DaprClient and DaprPreviewClient, and both of them contains some
+ * important methods, so we will create them all.
  */
 @Slf4j
 @Configuration(proxyBeanMethods = false)
@@ -56,7 +55,8 @@ public class DaprClientAutoConfiguration {
         SetupDaprPropertyUtil.setupDaprSystemProperty(daprClientConfig);
 
         DaprClient daprClient = new DaprClientBuilder().build();
-//        waitForDaprClient(daprClient, daprClientConfig.getSidecarConnectWaitMillis(), daprClientConfig.getSidecarConnectAlwaysRetry());
+        // waitForDaprClient(daprClient, daprClientConfig.getSidecarConnectWaitMillis(),
+        // daprClientConfig.getSidecarConnectAlwaysRetry());
 
         return daprClient;
     }

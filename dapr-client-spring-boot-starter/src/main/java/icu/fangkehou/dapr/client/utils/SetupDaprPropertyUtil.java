@@ -24,12 +24,12 @@ public class SetupDaprPropertyUtil {
         System.setProperty("dapr.http.port", daprClientConfig.getHttpPort().toString());
         System.setProperty("dapr.grpc.port", daprClientConfig.getGrpcPort().toString());
 
-        //grpc endpoint could be null
+        // grpc endpoint could be null
         if (daprClientConfig.getGrpcEndpoint() != null) {
             System.setProperty("dapr.grpc.endpoint", daprClientConfig.getGrpcEndpoint());
         }
 
-        //http endpoint could be null
+        // http endpoint could be null
         if (daprClientConfig.getGrpcEndpoint() != null) {
             System.setProperty("dapr.http.endpoint", daprClientConfig.getGrpcEndpoint());
         }
@@ -37,7 +37,7 @@ public class SetupDaprPropertyUtil {
         System.setProperty("dapr.api.max.retries", daprClientConfig.getMaxRetries().toString());
         System.setProperty("dapr.api.timeout.milliseconds", String.valueOf(daprClientConfig.getTimeout().toMillis()));
 
-        //api token could be null
+        // api token could be null
         if (daprClientConfig.getApiToken() != null) {
             System.setProperty("dapr.api.token", daprClientConfig.getApiToken());
         }

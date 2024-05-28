@@ -1,4 +1,30 @@
+/*
+ * Copyright (c) 2016-2024 Team Fangkehou
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package icu.fangkehou.dapr.feign;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
+
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.charset.Charset;
+import java.time.Duration;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 import feign.Client;
 import feign.Request;
@@ -12,50 +38,43 @@ import io.dapr.client.domain.InvokeMethodRequest;
 import io.dapr.utils.TypeRef;
 import reactor.core.publisher.Mono;
 
-import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import java.nio.charset.Charset;
-import java.time.Duration;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
 /**
- * This module directs Feign's requests to
- * <a href="https://dapr.io/">Dapr</a>, which is a microservice framework.
- * Ex.
+ * This module directs Feign's requests to <a href="https://dapr.io/">Dapr</a>, which is a microservice framework. Ex.
  * <p>
- * Currently, Dapr supports two ways to invoke operations, which is <b>invokeBinding (Output Binding)</b> and <b>invokeMethod</b>,
- * so this Client supports two schemas: <b>http://binding.xxx</b> or <b>http://method.xxx</b><br>
+ * Currently, Dapr supports two ways to invoke operations, which is <b>invokeBinding (Output Binding)</b> and
+ * <b>invokeMethod</b>, so this Client supports two schemas: <b>http://binding.xxx</b> or <b>http://method.xxx</b><br>
  * You don't have to mind why there is a http schema at start, it's just a trick to hack Spring Boot Openfeign.
  * <p>
- * For invokeMethod, there are two types of information in the url, which is very similar to an HTTP URL,
- * except that the host in the HTTP URL is converted to appId, and the path (excluding "/") is converted to methodName.<br>
- * For example, if you have a method which appid is "myApp", and methodName is "getAll", then the url of this request
- * is "http://method.myApp/getAll".<br>
+ * For invokeMethod, there are two types of information in the url, which is very similar to an HTTP URL, except that
+ * the host in the HTTP URL is converted to appId, and the path (excluding "/") is converted to methodName.<br>
+ * For example, if you have a method which appid is "myApp", and methodName is "getAll", then the url of this request is
+ * "http://method.myApp/getAll".<br>
  * You can also set HTTP Headers if you like, the Client will handle them.<br>
- * <b>Currently only HTTP invokes are supported, but I think we will support grpc invokes in the future, may be the url will be "http://method_grpc.myApp/getAll" or something.</b>
+ * <b>Currently only HTTP invokes are supported, but I think we will support grpc invokes in the future, may be the url
+ * will be "http://method_grpc.myApp/getAll" or something.</b>
  * <p>
- * For invokeBinding, there are also two types of information in the url, the host is the bindingName, and the path is the operation.<br>
- * <b>Note: different bindings support different operations, so you have to check <a href="https://docs.dapr.io/zh-hans/reference/components-reference/supported-bindings/">the documentation of Dapr</a> for that.</b><br>
- * For example, if you have a binding which bindingName is "myBinding", and the operation supported is "create",
- * and then the url of this request is "http://binding.myBinding/create"<br>
+ * For invokeBinding, there are also two types of information in the url, the host is the bindingName, and the path is
+ * the operation.<br>
+ * <b>Note: different bindings support different operations, so you have to check
+ * <a href="https://docs.dapr.io/zh-hans/reference/components-reference/supported-bindings/">the documentation of
+ * Dapr</a> for that.</b><br>
+ * For example, if you have a binding which bindingName is "myBinding", and the operation supported is "create", and
+ * then the url of this request is "http://binding.myBinding/create"<br>
  * You can put some metadata into the Header of your Feign Request, the Client will handle them.
  * <p>
- * As for response, the result code is always 200 OK, and if client have met any error, it will throw an IOException for that.
+ * As for response, the result code is always 200 OK, and if client have met any error, it will throw an IOException for
+ * that.
  *
  * <pre>
- * MyAppData response = Feign.builder().client(new DaprFeignClient()).target(MyAppData.class, "http://binding.myBinding/create");
+ * MyAppData response = Feign.builder().client(new DaprFeignClient()).target(MyAppData.class,
+ * "http://binding.myBinding/create");
  */
 public class DaprInvokeFeignClient implements Client {
 
     private final DaprClient daprClient;
 
     public DaprInvokeFeignClient() {
-        daprClient =  new DaprClientBuilder().build();
+        daprClient = new DaprClientBuilder().build();
     }
 
     public DaprInvokeFeignClient(DaprClient daprClient) {
@@ -235,7 +254,8 @@ public class DaprInvokeFeignClient implements Client {
         byte[] result;
 
         try {
-            result = response.block(Duration.of(options.connectTimeoutMillis()+ options.readTimeoutMillis(), TimeUnit.MILLISECONDS.toChronoUnit()));
+            result = response.block(Duration.of(options.connectTimeoutMillis() + options.readTimeoutMillis(),
+                    TimeUnit.MILLISECONDS.toChronoUnit()));
 
             if (result == null) {
                 result = new byte[0];
