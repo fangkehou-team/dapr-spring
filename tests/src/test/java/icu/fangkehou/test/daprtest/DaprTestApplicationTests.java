@@ -64,7 +64,7 @@ class DaprTestApplicationTests {
     // }
 
     @Test
-    void emptyTest(){
+    void emptyTest() {
 
     }
 
