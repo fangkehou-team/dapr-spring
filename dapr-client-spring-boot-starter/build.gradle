@@ -16,4 +16,7 @@ dependencies {
     api('org.springframework.boot:spring-boot-starter')
 
     api project(":dapr-dependencies-spring-boot")
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

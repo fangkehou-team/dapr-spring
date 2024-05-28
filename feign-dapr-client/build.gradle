@@ -11,9 +11,9 @@ dependencies {
     api("io.dapr:dapr-sdk:${daprVersion}")
     api("io.github.openfeign:feign-core")
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api'
     testImplementation 'io.github.openfeign:feign-jaxrs'
     testImplementation 'io.github.openfeign:feign-core'
 
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

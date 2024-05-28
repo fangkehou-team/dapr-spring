@@ -6,6 +6,7 @@ buildscript {
         maven {
             url 'https://plugins.gradle.org/m2/'
         }
+        mavenCentral()
     }
     ext {
         projectVersion = '0.1.0-SNAPSHOT'
@@ -42,6 +43,7 @@ plugins {
     id 'com.github.ben-manes.versions' version "${versionsPluginVersion}" // gradle dependencyUpdates
     id 'com.diffplug.spotless' version '6.25.0'
     id 'org.jetbrains.kotlin.jvm' version "${kotlinVersion}" apply false
+    id "com.vanniktech.maven.publish" version "0.28.0" apply false
 }
 
 // If you attempt to build without the `--scan` parameter in `gradle 6.0+` it will cause a build error that it can't find
@@ -185,6 +187,8 @@ allprojects { project ->
             micrometerVersion = dependencyManagement.importedProperties['micrometer.version']
             springFrameworkVersion = dependencyManagement.importedProperties['spring-framework.version']
             springCloudCommonsVersion = dependencyManagement.importedProperties['spring-cloud-commons.version']
+
+            SonatypeHost = com.vanniktech.maven.publish.SonatypeHost
         }
     }
 
@@ -233,7 +237,7 @@ allprojects { project ->
                     'https://docs.spring.io/spring-framework/docs/' + springFrameworkVersion + '/javadoc-api/',
                     'https://docs.spring.io/spring-boot/docs/' + springBootVersion + '/api/',
                     'https://static.javadoc.io/org.springframework.cloud/spring-cloud-commons/' + springCloudCommonsVersion + '/',
-                    'https://google.github.io/guava/releases/29.0-android/api/docs/'
+                    'https://guava.dev/releases/29.0-android/api/docs/'
             ]
         }
     }

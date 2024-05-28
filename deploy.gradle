@@ -1,5 +1,6 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
+apply plugin: "com.vanniktech.maven.publish"
 
 ext {
     isReleaseVersion = !(projectVersion =~ /-SNAPSHOT$/)
@@ -17,59 +18,56 @@ task javadocJar(type: Jar) {
 }
 
 publishing {
-    publications {
-        mavenJava(MavenPublication) {
-
-            from components.java
-            artifact sourcesJar
-            artifact javadocJar
-
-            pom {
-                name = 'Dapr Spring Boot Starter'
-                description = 'Dapr Spring Boot Starter'
-                url = 'https://github.com/fangkehou-team/dapr-spring'
-                licenses {
-                    license {
-                        name = 'The Apache License, Version 2.0'
-                        url = 'https://opensource.org/licenses/Apache-2.0'
-                        distribution = 'repo'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'lony2003'
-                        name = 'Lony Zhang'
-                        email = 'zhangke200377@fangkehou.icu'
-                    }
-                }
-                scm {
-                    connection = 'scm:git:git://github.com/fangkehou-team/dapr-spring.git'
-                    developerConnection = 'scm:git:ssh@github.com:fangkehou-team/dapr-spring.git'
-                    url = 'https://github.com/fangkehou-team/dapr-spring'
-                }
-            }
-
-            versionMapping {
-                usage('java-api') {
-                    fromResolutionOf('runtimeClasspath')
-                }
-                usage('java-runtime') {
-                    fromResolutionResult()
-                }
-            }
-        }
-    }
+//    publications {
+//        mavenJava(MavenPublication) {
+//
+//            from components.java
+//            artifact sourcesJar
+//            artifact javadocJar
+//
+//            pom {
+//                name = 'Dapr Spring Boot Starter'
+//                description = 'Dapr Spring Boot Starter'
+//                url = 'https://github.com/fangkehou-team/dapr-spring'
+//                licenses {
+//                    license {
+//                        name = 'The Apache License, Version 2.0'
+//                        url = 'https://opensource.org/licenses/Apache-2.0'
+//                        distribution = 'repo'
+//                    }
+//                }
+//                developers {
+//                    developer {
+//                        id = 'lony2003'
+//                        name = 'Lony Zhang'
+//                        email = 'zhangke200377@fangkehou.icu'
+//                    }
+//                }
+//                scm {
+//                    connection = 'scm:git:git://github.com/fangkehou-team/dapr-spring.git'
+//                    developerConnection = 'scm:git:ssh@github.com:fangkehou-team/dapr-spring.git'
+//                    url = 'https://github.com/fangkehou-team/dapr-spring'
+//                }
+//            }
+//
+//            versionMapping {
+//                usage('java-api') {
+//                    fromResolutionOf('runtimeClasspath')
+//                }
+//                usage('java-runtime') {
+//                    fromResolutionResult()
+//                }
+//            }
+//        }
+//    }
     repositories {
         maven {
+            name = "GitHubPackages"
             credentials {
-                username System.getenv('OSSRH_USER')
-                password System.getenv('OSSRH_PASS')
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
             }
-            if (project.ext.isReleaseVersion) {
-                url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2"
-            } else {
-                url "https://s01.oss.sonatype.org/content/repositories/snapshots"
-            }
+            url "https://maven.pkg.github.com/fangkehou-team/dapr-spring"
         }
     }
 
@@ -79,7 +77,7 @@ publishing {
 
     signing {
         useGpgCmd()
-        sign publishing.publications.mavenJava
+//        sign publishing.publications.mavenJava
     }
 
     javadoc {
@@ -87,4 +85,35 @@ publishing {
             options.addBooleanOption('html5', true)
         }
     }
+}
+
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    pom {
+        name = 'Dapr Spring Boot Starter'
+        description = 'Dapr Spring Boot Starter'
+        url = 'https://github.com/fangkehou-team/dapr-spring'
+        licenses {
+            license {
+                name = 'The Apache License, Version 2.0'
+                url = 'https://opensource.org/licenses/Apache-2.0'
+                distribution = 'repo'
+            }
+        }
+        developers {
+            developer {
+                id = 'lony2003'
+                name = 'Lony Zhang'
+                email = 'zhangke200377@fangkehou.icu'
+            }
+        }
+        scm {
+            connection = 'scm:git:git://github.com/fangkehou-team/dapr-spring.git'
+            developerConnection = 'scm:git:ssh@github.com:fangkehou-team/dapr-spring.git'
+            url = 'https://github.com/fangkehou-team/dapr-spring'
+        }
+    }
+
+    signAllPublications()
 }
