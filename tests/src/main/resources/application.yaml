@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: "Dapr Test"
+dapr:
+  client:
+    sidecar-ip: "127.0.0.1"
+    sidecar-connect-wait-millis: 2000
+    sidecar-connect-always-retry: true

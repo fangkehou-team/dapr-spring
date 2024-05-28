@@ -1,0 +1,13 @@
+plugins {
+    id 'java-library'
+}
+
+apply from: '../deploy.gradle'
+
+group = 'icu.fangkehou'
+version = projectVersion
+
+dependencies {
+    api("io.dapr:dapr-sdk:${daprVersion}")
+    api("io.dapr:dapr-sdk-springboot3:${daprVersion}")
+}

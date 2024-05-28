@@ -1,0 +1,8 @@
+rootProject.name = 'dapr-spring-boot-starter'
+include 'feign-dapr-client'
+include 'dapr-openfeign-spring-boot-starter'
+include 'dapr-secretstore-spring-boot-starter'
+include 'dapr-client-spring-boot-starter'
+include 'tests'
+include 'dapr-dependencies-spring-boot'
+

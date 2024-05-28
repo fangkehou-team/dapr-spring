@@ -1,0 +1,90 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+ext {
+    isReleaseVersion = !(projectVersion =~ /-SNAPSHOT$/)
+    isNeedSign = project.hasProperty('signing.gnupg.keyName') && isReleaseVersion
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier.set('sources')
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    archiveClassifier.set('javadoc')
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = 'Dapr Spring Boot Starter'
+                description = 'Dapr Spring Boot Starter'
+                url = 'https://github.com/fangkehou-team/dapr-spring'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'https://opensource.org/licenses/Apache-2.0'
+                        distribution = 'repo'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'lony2003'
+                        name = 'Lony Zhang'
+                        email = 'zhangke200377@fangkehou.icu'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/fangkehou-team/dapr-spring.git'
+                    developerConnection = 'scm:git:ssh@github.com:fangkehou-team/dapr-spring.git'
+                    url = 'https://github.com/fangkehou-team/dapr-spring'
+                }
+            }
+
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username System.getenv('OSSRH_USER')
+                password System.getenv('OSSRH_PASS')
+            }
+            if (project.ext.isReleaseVersion) {
+                url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2"
+            } else {
+                url "https://s01.oss.sonatype.org/content/repositories/snapshots"
+            }
+        }
+    }
+
+    tasks.withType(Sign) {
+        onlyIf { project.ext.isNeedSign }
+    }
+
+    signing {
+        useGpgCmd()
+        sign publishing.publications.mavenJava
+    }
+
+    javadoc {
+        if(JavaVersion.current().isJava9Compatible()) {
+            options.addBooleanOption('html5', true)
+        }
+    }
+}

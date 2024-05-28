@@ -1,0 +1,136 @@
+{
+  "groups": [
+    {
+      "name": "dapr.client",
+      "type": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "The container for Dapr Client related configuration options."
+    }
+  ],
+  "properties": [
+    {
+      "name": "dapr.client.sidecar_ip",
+      "type": "java.lang.String",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "IP for Dapr's sidecar."
+    },
+    {
+      "name": "dapr.client.http_port",
+      "type": "java.lang.Integer",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "HTTP port for Dapr after checking system property and environment variable."
+    },
+    {
+      "name": "dapr.client.grpc_port",
+      "type": "java.lang.Integer",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "GRPC port for Dapr after checking system property and environment variable."
+    },
+    {
+      "name": "dapr.client.grpc_endpoint",
+      "type": "java.lang.String",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "GRPC endpoint for remote sidecar connectivity."
+    },
+    {
+      "name": "dapr.client.http_endpoint",
+      "type": "java.lang.String",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "GRPC endpoint for remote sidecar connectivity."
+    },
+    {
+      "name": "dapr.client.max_retries",
+      "type": "java.lang.Integer",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "Maximum number of retries for retriable exceptions."
+    },
+    {
+      "name": "dapr.client.timeout",
+      "type": "java.time.Duration",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "Timeout for API calls."
+    },
+    {
+      "name": "dapr.client.api_protocol",
+      "type": "java.lang.String",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "Determines if Dapr client will use gRPC or HTTP to talk to Dapr's side car."
+    },
+    {
+      "name": "dapr.client.api_method_invocation_protocol",
+      "type": "java.lang.String",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "Determines if Dapr client should use gRPC or HTTP for Dapr's service method invocation APIs."
+    },
+    {
+      "name": "dapr.client.api_token",
+      "type": "java.lang.String",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "API token for authentication between App and Dapr's side car."
+    },
+    {
+      "name": "dapr.client.string_charset",
+      "type": "java.nio.charset.Charset",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "Determines which string encoding is used in Dapr's Java SDK."
+    },
+    {
+      "name": "dapr.client.http_client_read_timeout_seconds",
+      "type": "java.lang.Integer",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "Dapr's timeout in seconds for HTTP client reads."
+    },
+    {
+      "name": "dapr.client.http_client_max_requests",
+      "type": "java.lang.Integer",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "Dapr's default maximum number of requests for HTTP client to execute concurrently."
+    },
+    {
+      "name": "dapr.client.http_client_max_idle_connections",
+      "type": "java.lang.Integer",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "Dapr's default maximum number of idle connections for HTTP connection pool."
+    },
+    {
+      "name": "dapr.client.sidecar_connect_wait_millis",
+      "type": "java.lang.Integer",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "Dapr's timeout in milliseconds for wait sidecar to be online."
+    },
+    {
+      "name": "dapr.client.sidecar_connect_always_retry",
+      "type": "java.lang.Boolean",
+      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
+      "description": "Dapr's value for if always wait dapr sidecar to be online."
+    }
+  ],
+  "hints": [
+    {
+      "name": "dapr.client.api_protocol",
+      "values": [
+        {
+          "value": "grpc",
+          "description": "Connect to dapr with grpc protocol."
+        },
+        {
+          "value": "http",
+          "description": "Connect to dapr with http protocol."
+        }
+      ]
+    },
+    {
+      "name": "dapr.client.api_method_invocation_protocol",
+      "values": [
+        {
+          "value": "grpc",
+          "description": "Invoke to dapr with grpc protocol."
+        },
+        {
+          "value": "http",
+          "description": "Invoke to dapr with grpc protocol."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="74e012d7-7de0-40f9-8bd9-2632cf616427" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug_report.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/feature_request.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/question.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/renovate.json5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/build-master.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/pull-request.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README-zh_CN.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dapr-client-spring-boot-starter/src/main/java/icu/fangkehou/dapr/client/autoconfigure/DaprClientAutoConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dapr-client-spring-boot-starter/src/main/java/icu/fangkehou/dapr/client/config/DaprClientConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dapr-client-spring-boot-starter/src/main/java/icu/fangkehou/dapr/client/utils/SetupDaprPropertyUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dapr-client-spring-boot-starter/src/main/resources/META-INF/additional-spring-configuration-metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dapr-client-spring-boot-starter/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dapr-openfeign-spring-boot-starter/src/main/java/icu/fangkehou/dapr/feign/annotation/UseDaprClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dapr-openfeign-spring-boot-starter/src/main/java/icu/fangkehou/dapr/feign/autoconfigure/DaprFeignClientAutoConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dapr-openfeign-spring-boot-starter/src/main/java/icu/fangkehou/dapr/feign/targeter/DaprClientTargeter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dapr-openfeign-spring-boot-starter/src/main/java/org/springframework/cloud/openfeign/DaprFeignClientOpenFeignAutoConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dapr-openfeign-spring-boot-starter/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extra/eclipse/eclipse-formatter.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extra/eclipse/eclipse.importorder" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extra/spotless/license.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feign-dapr-client/src/test/java/icu/fangkehou/dapr/feign/DaprFeignClientTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feign-dapr-client/src/test/java/icu/fangkehou/dapr/feign/HelloRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/private.key.enc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/src/main/java/icu/fangkehou/test/daprtest/DaprTestApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/src/main/java/icu/fangkehou/test/daprtest/feign/DaprFeignTestClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/src/main/java/icu/fangkehou/test/daprtest/feign/DefaultFeignTestClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/src/test/java/icu/fangkehou/test/daprtest/DaprTestApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grpc-spring/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc-spring/CONTRIBUTING.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/../grpc-spring">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/dapr-client-spring-boot-starter">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/tests">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="dapr-spring-boot-starter" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="dapr-spring-boot-starter" type="f1a62948:ProjectNode" />
+                <item name="tests" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="dapr-spring-boot-starter" type="f1a62948:ProjectNode" />
+                <item name="tests" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="dapr-spring-boot-starter" type="f1a62948:ProjectNode" />
+                <item name="tests" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2h0aRLCGBeREmA2j82OAkrxWibd" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Gradle.DaprFeignClientTest.daprClientCreateTest.executor": "Run",
+    "Gradle.DaprFeignClientTest.executor": "Run",
+    "Gradle.DaprTestApplicationTests.executor": "Run",
+    "Gradle.DaprTestApplicationTests.testClientConfig.executor": "Run",
+    "Gradle.DaprTestApplicationTests.testDaprClient.executor": "Run",
+    "Gradle.DaprTestApplicationTests.testDaprFeignClient.executor": "Run",
+    "Gradle.DaprTestApplicationTests.testDefaultFeignClient.executor": "Run",
+    "Gradle.dapr-spring:dapr-client-spring-boot-starter [processResources].executor": "Run",
+    "Gradle.dapr-spring:dapr-client-spring-boot-starter [spotlessJavaApply].executor": "Run",
+    "Gradle.dapr-spring:dapr-client-spring-boot-starter [spotlessJava].executor": "Run",
+    "Gradle.dapr-spring:tests [bootTestRun].executor": "Run",
+    "Gradle.下载源代码.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/zhangke200377/development/projects/nep-platform/dapr-spring-boot/spring-cloud-vault",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "kotlin-gradle-user-dirs": [
+      "/home/zhangke200377/.gradle"
+    ]
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dapr-openfeign-spring-boot-starter/src/main/resources" />
+      <recent name="$PROJECT_DIR$/dapr-client-spring-boot-starter/src/main/resources/META-INF.spring" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.springframework.cloud.openfeign" />
+      <recent name="icu.fangkehou.dapr.feign.annotation" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.DaprTestApplicationTests.testDefaultFeignClient">
+    <configuration name="DaprTestApplicationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tests:test" />
+            <option value="--tests" />
+            <option value="&quot;icu.fangkehou.test.daprtest.DaprTestApplicationTests&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="DaprTestApplicationTests.testDaprClient" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tests:test" />
+            <option value="--tests" />
+            <option value="&quot;icu.fangkehou.test.daprtest.DaprTestApplicationTests.testDaprClient&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="DaprTestApplicationTests.testDaprFeignClient" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tests:test" />
+            <option value="--tests" />
+            <option value="&quot;icu.fangkehou.test.daprtest.DaprTestApplicationTests.testDaprFeignClient&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="DaprTestApplicationTests.testDefaultFeignClient" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tests:test" />
+            <option value="--tests" />
+            <option value="&quot;icu.fangkehou.test.daprtest.DaprTestApplicationTests.testDefaultFeignClient&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="dapr-spring:tests [bootTestRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/tests" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootTestRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="dapr-spring" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="dapr-spring" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="grpc-spring-boot-starter.examples.grpc-observability.backend.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="net.devh.boot.grpc.examples.observability.backend.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CloudClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="grpc-spring-boot-starter.examples.cloud-grpc-client.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="net.devh.boot.grpc.examples.cloud.client.CloudClientApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CloudServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="grpc-spring-boot-starter.examples.cloud-grpc-server.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="net.devh.boot.grpc.examples.cloud.server.CloudServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DaprTestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="dapr-spring-boot-starter.tests.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="icu.fangkehou.test.daprtest.DaprTestApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="grpc-spring-boot-starter.examples.cloud-eureka-server.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="net.devh.boot.grpc.examples.cloud.server.EurekaServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FrontendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="grpc-spring-boot-starter.examples.grpc-observability.frontend.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="net.devh.boot.grpc.examples.observability.frontend.FrontendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LocalGrpcClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="grpc-spring-boot-starter.examples.local-grpc-client.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="net.devh.boot.grpc.examples.local.client.LocalGrpcClientApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LocalGrpcServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="grpc-spring-boot-starter.examples.local-grpc-server.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="net.devh.boot.grpc.examples.local.server.LocalGrpcServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SecurityGrpcClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="grpc-spring-boot-starter.examples.security-grpc-client.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="net.devh.boot.grpc.examples.security.client.SecurityGrpcClientApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SecurityGrpcServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="grpc-spring-boot-starter.examples.security-grpc-server.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="net.devh.boot.grpc.examples.security.server.SecurityGrpcServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.DaprTestApplicationTests.testDefaultFeignClient" />
+        <item itemvalue="Gradle.DaprTestApplicationTests" />
+        <item itemvalue="Gradle.DaprTestApplicationTests.testDaprFeignClient" />
+        <item itemvalue="Gradle.dapr-spring:tests [bootTestRun]" />
+        <item itemvalue="Gradle.DaprTestApplicationTests.testDaprClient" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="74e012d7-7de0-40f9-8bd9-2632cf616427" name="更改" comment="" />
+      <created>1716733440029</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716733440029</updated>
+      <workItem from="1716733441631" duration="2894000" />
+      <workItem from="1716772626469" duration="23346000" />
+      <workItem from="1716803444350" duration="4651000" />
+      <workItem from="1716858932335" duration="11425000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

@@ -1,0 +1,254 @@
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    ext {
+        projectVersion = '0.1.0-SNAPSHOT'
+
+        // https://github.com/google/guava/releases
+        guavaVersion = '33.1.0-jre'
+
+        // https://github.com/spring-projects/spring-boot/releases
+        springBootVersion = '3.2.5'
+        // https://github.com/spring-cloud/spring-cloud-release/releases
+        springCloudVersion = '2023.0.1'
+        // https://github.com/alibaba/spring-cloud-alibaba/releases
+        springCloudAlibabaNacosVersion = '2023.0.1.0'
+
+        lombokPluginVersion = '8.6'
+        versioningPluginVersion = '3.1.0'
+        versionsPluginVersion = '0.51.0'
+
+        // https://github.com/JetBrains/kotlin/releases
+        kotlinVersion = "1.9.23"
+
+        // https://github.com/dapr/java-sdk/releases
+        daprVersion = "1.11.0"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'org.springframework.boot' version "${springBootVersion}" apply false
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'net.nemerosa.versioning' version "${versioningPluginVersion}"
+    id 'io.freefair.lombok' version "${lombokPluginVersion}" apply false
+    id 'com.github.ben-manes.versions' version "${versionsPluginVersion}" // gradle dependencyUpdates
+    id 'com.diffplug.spotless' version '6.25.0'
+    id 'org.jetbrains.kotlin.jvm' version "${kotlinVersion}" apply false
+}
+
+// If you attempt to build without the `--scan` parameter in `gradle 6.0+` it will cause a build error that it can't find
+// a buildScan property to change. This avoids that problem.
+if (hasProperty('buildScan')) {
+    buildScan {
+        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+        termsOfServiceAgree = 'yes'
+    }
+}
+
+// you may use IntelliJ's project configuration to make it use the gradle version defined in the gradle script's wrapper section
+wrapper {
+    // Update using:
+    // ./gradlew wrapper --gradle-version=8.4 --distribution-type=bin
+    gradleVersion = '8.5'
+}
+
+def buildTimeAndDate = OffsetDateTime.now()
+
+ext {
+    buildDate = DateTimeFormatter.ISO_LOCAL_DATE.format(buildTimeAndDate)
+    buildTime = DateTimeFormatter.ofPattern('HH:mm:ss.SSSZ').format(buildTimeAndDate)
+    buildRevision = versioning.info.commit
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'com.diffplug.spotless'
+    apply plugin: 'io.freefair.lombok'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+    compileJava {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        options.encoding = 'UTF-8'
+    }
+
+    compileJava.options*.compilerArgs = [
+            '-Xlint:all', '-Xlint:-processing', '-parameters'
+    ]
+
+    eclipse {
+        classpath {
+            downloadJavadoc = true
+            downloadSources = true
+        }
+    }
+
+    spotless {
+        java {
+            target('src/main/**/*.java', 'src/test/**/*.java')
+            targetExclude('**/SocketUtils.java')
+            licenseHeaderFile rootProject.file('extra/spotless/license.java')
+            removeUnusedImports()
+            importOrderFile rootProject.file('extra/eclipse/eclipse.importorder')
+            eclipse().configFile rootProject.file('extra/eclipse/eclipse-formatter.xml')
+        }
+        format('misc') {
+            target('**/*.gradle', '**/*.md', '**/*.yml')
+            targetExclude('**/build/**/*.*')
+            trimTrailingWhitespace()
+            endWithNewline()
+        }
+    }
+
+    normalization {
+        runtimeClasspath {
+            metaInf{
+                ignoreAttribute('Build-Time')
+            }
+        }
+    }
+
+    // Copy LICENSE
+    tasks.withType(Jar) {
+        from(project.rootDir) {
+            include 'LICENSE'
+            into 'META-INF'
+        }
+    }
+
+    // Generate MANIFEST.MF
+    jar {
+        manifest {
+            attributes(
+                    'Created-By': "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})".toString(),
+                    'Built-By': 'travis',
+                    'Build-Date': buildDate,
+                    'Build-Time': buildTime,
+                    'Built-OS': "${System.properties['os.name']}",
+                    'Build-Revision': buildRevision,
+                    'Specification-Title': project.name,
+                    'Specification-Version': projectVersion,
+                    'Specification-Vendor': 'Michael Zhang',
+                    'Implementation-Title': project.name,
+                    'Implementation-Version': projectVersion,
+                    'Implementation-Vendor': 'Michael Zhang'
+            )
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    buildscript {
+        repositories {
+            maven { url 'https://plugins.gradle.org/m2/' }
+        }
+    }
+}
+
+Project commonProject = project(':dapr-client-spring-boot-starter')
+
+String javaAPIdoc =  'https://docs.oracle.com/en/java/javase/17/docs/api'
+
+allprojects { project ->
+    buildscript {
+        dependencyManagement {
+            imports {
+                mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+                mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+                mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaNacosVersion}"
+                mavenBom "com.google.guava:guava-bom:${guavaVersion}"
+                mavenBom "org.junit:junit-bom:5.10.2"
+                mavenBom "org.jetbrains.kotlin:kotlin-bom:${kotlinVersion}"
+            }
+        }
+
+        ext {
+            // not explicitly needed in subprojects, as the BOM for Spring Boot sets this version
+            micrometerVersion = dependencyManagement.importedProperties['micrometer.version']
+            springFrameworkVersion = dependencyManagement.importedProperties['spring-framework.version']
+            springCloudCommonsVersion = dependencyManagement.importedProperties['spring-cloud-commons.version']
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            // failFast = true
+            // showStandardStreams = true
+            exceptionFormat = 'full'
+            showCauses = true
+            showExceptions = true
+            showStackTraces = true
+            // prints out individual test progress by hooking into junit engine events
+            // it.events('passed', 'skipped', 'failed', 'standard_out')
+            it.events('passed', 'skipped', 'failed')
+
+            it.debug { dbg ->
+                // prints out individual test progress when run under the debugger
+                // dbg.events('started', 'failed', 'passed', 'skipped', 'standard_error', 'standard_out')
+                dbg.events('started', 'failed', 'passed', 'skipped')
+            }
+        }
+    }
+
+    if (project.name.contains('dapr-')) {
+        java {
+            registerFeature('optionalSupport') {
+                usingSourceSet(sourceSets.main)
+            }
+        }
+
+        // Javadoc Task
+        javadoc {
+            dependsOn delombok
+            source = delombok
+            failOnError = false
+            options.locale = 'en_US'
+            options.encoding = 'UTF-8'
+            options.jFlags('-Dhttp.agent=gradle-javadoc') // Required for javadoc.io
+            if (project.name != 'dapr-client-spring-boot-starter' && project.name != 'feign-dapr-client') {
+                options.linksOffline('https://static.javadoc.io/icu.fangkehou/dapr-client-spring-boot-starter/' + projectVersion, commonProject.buildDir.getPath() + '/docs/javadoc')
+            }
+            options.links = [
+                    javaAPIdoc,
+                    'https://dapr.github.io/java-sdk/',
+                    'https://docs.spring.io/spring-framework/docs/' + springFrameworkVersion + '/javadoc-api/',
+                    'https://docs.spring.io/spring-boot/docs/' + springBootVersion + '/api/',
+                    'https://static.javadoc.io/org.springframework.cloud/spring-cloud-commons/' + springCloudCommonsVersion + '/',
+                    'https://google.github.io/guava/releases/29.0-android/api/docs/'
+            ]
+        }
+    }
+
+}
+
+apply from: './deploy.gradle'
+
+group = 'icu.fangkehou'
+version = projectVersion
+
+dependencies {
+    api project(':dapr-client-spring-boot-starter')
+    api project(':dapr-openfeign-spring-boot-starter')
+    api project(':dapr-secretstore-spring-boot-starter')
+
+    testImplementation project(':tests')
+}

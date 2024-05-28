@@ -1,0 +1,2 @@
+icu.fangkehou.dapr.feign.autoconfigure.DaprFeignClientAutoConfiguration
+org.springframework.cloud.openfeign.DaprFeignClientOpenFeignAutoConfiguration
