@@ -17,6 +17,7 @@
 package icu.fangkehou.test.daprtest;
 
 
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
@@ -61,5 +62,10 @@ class DaprTestApplicationTests {
     // void testDaprFeignClient() {
     // daprFeignClient.getQuery();
     // }
+
+    @Test
+    void emptyTest(){
+
+    }
 
 }
