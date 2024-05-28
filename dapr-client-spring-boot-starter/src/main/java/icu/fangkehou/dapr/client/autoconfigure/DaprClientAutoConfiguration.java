@@ -55,8 +55,8 @@ public class DaprClientAutoConfiguration {
         SetupDaprPropertyUtil.setupDaprSystemProperty(daprClientConfig);
 
         DaprClient daprClient = new DaprClientBuilder().build();
-        // waitForDaprClient(daprClient, daprClientConfig.getSidecarConnectWaitMillis(),
-        // daprClientConfig.getSidecarConnectAlwaysRetry());
+        waitForDaprClient(daprClient, daprClientConfig.getSidecarConnectWaitMillis(),
+                daprClientConfig.getSidecarConnectAlwaysRetry());
 
         return daprClient;
     }
