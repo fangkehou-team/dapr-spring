@@ -11,6 +11,10 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-autoconfigure-processor'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
+    implementation project(':dapr-dependencies-spring-boot')
+    implementation 'org.springframework.cloud:spring-cloud-commons'
+    implementation 'org.springframework.cloud:spring-cloud-context'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

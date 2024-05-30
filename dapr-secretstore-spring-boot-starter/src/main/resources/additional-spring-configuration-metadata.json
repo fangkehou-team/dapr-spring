@@ -1,0 +1,25 @@
+{
+  "properties": [
+    {
+      "name": "dapr.secretstore.refresh-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "sourceType": "icu.fangkehou.dapr.secretstore.config.DaprSecretStoreConfig",
+      "description": "the master switch for refresh configuration, it default opened(true)."
+    },
+    {
+      "name": "dapr.secretstore.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "sourceType": "icu.fangkehou.dapr.secretstore.config.DaprSecretStoreConfig",
+      "description": "enable dapr secret store or not."
+    },
+    {
+      "name": "dapr.secretstore.timeout",
+      "type": "java.lang.Integer",
+      "defaultValue": 2000,
+      "sourceType": "icu.fangkehou.dapr.secretstore.config.DaprSecretStoreConfig",
+      "description": "timeout for getting dapr secret store."
+    }
+  ]
+}

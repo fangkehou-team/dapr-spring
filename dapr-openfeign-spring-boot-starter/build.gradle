@@ -11,9 +11,8 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-autoconfigure-processor'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
-    api('org.springframework.boot:spring-boot-starter')
     api("org.springframework.cloud:spring-cloud-starter-openfeign")
-    api project(":feign-dapr-client")
+    implementation project(":feign-dapr-client")
     api project(":dapr-client-spring-boot-starter")
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

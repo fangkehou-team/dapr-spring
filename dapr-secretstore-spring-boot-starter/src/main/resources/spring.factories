@@ -1,0 +1,7 @@
+# ConfigData Location Resolvers
+org.springframework.boot.context.config.ConfigDataLocationResolver=\
+icu.fangkehou.dapr.secretstore.configdata.DaprSecretStoreConfigDataLocationResolver
+
+# ConfigData Loaders
+org.springframework.boot.context.config.ConfigDataLoader=\
+icu.fangkehou.dapr.secretstore.configdata.DaprSecretStoreConfigDataLoader

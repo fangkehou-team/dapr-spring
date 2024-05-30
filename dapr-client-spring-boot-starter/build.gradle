@@ -13,8 +13,6 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-autoconfigure-processor'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
-    api('org.springframework.boot:spring-boot-starter')
-
     api project(":dapr-dependencies-spring-boot")
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
