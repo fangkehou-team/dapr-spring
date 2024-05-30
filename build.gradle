@@ -9,7 +9,7 @@ buildscript {
         mavenCentral()
     }
     ext {
-        projectVersion = '0.1.0-SNAPSHOT'
+        projectVersion = '0.2.0-SNAPSHOT'
 
         // https://github.com/google/guava/releases
         guavaVersion = '33.1.0-jre'
