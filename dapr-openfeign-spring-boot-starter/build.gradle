@@ -15,6 +15,7 @@ dependencies {
     implementation project(":feign-dapr-client")
     api project(":dapr-client-spring-boot-starter")
 
+    testImplementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

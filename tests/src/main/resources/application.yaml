@@ -1,8 +1,13 @@
 spring:
   application:
     name: "Dapr Test"
+  config:
+    import: dapr:secret:mysecret
 dapr:
   client:
     sidecar-ip: "127.0.0.1"
     sidecar-connect-wait-millis: 2000
     sidecar-connect-always-retry: true
+  secretstore:
+    enabled: true
+

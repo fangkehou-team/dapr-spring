@@ -16,25 +16,26 @@
 
 package icu.fangkehou.dapr.client.config;
 
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
-
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.DeprecatedConfigurationProperty;
 import org.springframework.boot.convert.DurationUnit;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 
 /**
  * The properties for creating dapr client.
  */
 @ToString
 @EqualsAndHashCode
-@ConfigurationProperties("dapr.client")
+@ConfigurationProperties(DaprClientConfig.PROPERTY_PREFIX)
 public class DaprClientConfig {
+
+    public static final String PROPERTY_PREFIX = "dapr.client";
 
     /**
      * Dapr's default IP for HTTP and gRPC communication.
