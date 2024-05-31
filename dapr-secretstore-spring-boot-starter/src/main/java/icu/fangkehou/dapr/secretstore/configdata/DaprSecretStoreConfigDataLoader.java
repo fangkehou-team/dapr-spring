@@ -16,18 +16,7 @@
 
 package icu.fangkehou.dapr.secretstore.configdata;
 
-import icu.fangkehou.dapr.secretstore.config.DaprClientSecretStoreConfigManager;
-import icu.fangkehou.dapr.secretstore.config.DaprSecretStoreConfig;
-import icu.fangkehou.dapr.secretstore.parser.DaprSecretStoreParserHandler;
-import io.dapr.client.DaprClient;
-import org.apache.commons.logging.Log;
-import org.springframework.boot.context.config.ConfigData;
-import org.springframework.boot.context.config.ConfigDataLoader;
-import org.springframework.boot.context.config.ConfigDataLoaderContext;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
-import org.springframework.boot.logging.DeferredLogFactory;
-import org.springframework.core.env.PropertySource;
-import reactor.core.publisher.Mono;
+import static org.springframework.boot.context.config.ConfigData.Option.*;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -36,7 +25,19 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import static org.springframework.boot.context.config.ConfigData.Option.*;
+import org.apache.commons.logging.Log;
+import org.springframework.boot.context.config.ConfigData;
+import org.springframework.boot.context.config.ConfigDataLoader;
+import org.springframework.boot.context.config.ConfigDataLoaderContext;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.boot.logging.DeferredLogFactory;
+import org.springframework.core.env.PropertySource;
+
+import icu.fangkehou.dapr.secretstore.config.DaprClientSecretStoreConfigManager;
+import icu.fangkehou.dapr.secretstore.config.DaprSecretStoreConfig;
+import icu.fangkehou.dapr.secretstore.parser.DaprSecretStoreParserHandler;
+import io.dapr.client.DaprClient;
+import reactor.core.publisher.Mono;
 
 public class DaprSecretStoreConfigDataLoader implements ConfigDataLoader<DaprSecretStoreConfigDataResource> {
 

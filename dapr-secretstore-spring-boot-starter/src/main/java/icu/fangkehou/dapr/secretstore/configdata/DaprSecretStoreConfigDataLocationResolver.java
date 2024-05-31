@@ -16,9 +16,9 @@
 
 package icu.fangkehou.dapr.secretstore.configdata;
 
-import icu.fangkehou.dapr.client.config.DaprClientConfig;
-import icu.fangkehou.dapr.secretstore.config.DaprClientSecretStoreConfigManager;
-import icu.fangkehou.dapr.secretstore.config.DaprSecretStoreConfig;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.springframework.boot.BootstrapRegistry;
 import org.springframework.boot.ConfigurableBootstrapContext;
@@ -29,8 +29,9 @@ import org.springframework.boot.context.properties.bind.Binder;
 import org.springframework.boot.logging.DeferredLogFactory;
 import org.springframework.core.Ordered;
 
-import java.util.ArrayList;
-import java.util.List;
+import icu.fangkehou.dapr.client.config.DaprClientConfig;
+import icu.fangkehou.dapr.secretstore.config.DaprClientSecretStoreConfigManager;
+import icu.fangkehou.dapr.secretstore.config.DaprSecretStoreConfig;
 
 public class DaprSecretStoreConfigDataLocationResolver
         implements ConfigDataLocationResolver<DaprSecretStoreConfigDataResource>, Ordered {
@@ -110,8 +111,8 @@ public class DaprSecretStoreConfigDataLocationResolver
     }
 
     private void registerConfigManager(DaprSecretStoreConfig properties,
-                                       DaprClientConfig clientConfig,
-                                       ConfigurableBootstrapContext bootstrapContext) {
+            DaprClientConfig clientConfig,
+            ConfigurableBootstrapContext bootstrapContext) {
         if (!bootstrapContext.isRegistered(DaprClientSecretStoreConfigManager.class)) {
             bootstrapContext.register(DaprClientSecretStoreConfigManager.class,
                     BootstrapRegistry.InstanceSupplier

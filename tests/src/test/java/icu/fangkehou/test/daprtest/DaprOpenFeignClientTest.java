@@ -16,11 +16,12 @@
 
 package icu.fangkehou.test.daprtest;
 
-import icu.fangkehou.dapr.secretstore.config.DaprClientSecretStoreConfigManager;
-import icu.fangkehou.test.daprtest.feign.DaprFeignTestClient;
-import io.dapr.client.DaprClient;
-import io.dapr.client.domain.InvokeMethodRequest;
-import io.dapr.utils.TypeRef;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -30,13 +31,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.util.ReflectionTestUtils;
+
+import icu.fangkehou.dapr.secretstore.config.DaprClientSecretStoreConfigManager;
+import icu.fangkehou.test.daprtest.feign.DaprFeignTestClient;
+import io.dapr.client.DaprClient;
+import io.dapr.client.domain.InvokeMethodRequest;
+import io.dapr.utils.TypeRef;
 import reactor.core.publisher.Mono;
-
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @ExtendWith({SpringExtension.class, MockitoExtension.class})

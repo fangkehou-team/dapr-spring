@@ -31,7 +31,7 @@ public class DaprClientSecretStoreConfigManager {
     private final DaprClientConfig daprClientConfig;
 
     public DaprClientSecretStoreConfigManager(DaprSecretStoreConfig daprSecretStoreConfig,
-                                              DaprClientConfig daprClientConfig) {
+            DaprClientConfig daprClientConfig) {
         this.daprSecretStoreConfig = daprSecretStoreConfig;
         this.daprClientConfig = daprClientConfig;
 

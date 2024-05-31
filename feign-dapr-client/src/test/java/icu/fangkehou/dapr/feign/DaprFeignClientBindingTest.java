@@ -17,6 +17,14 @@
 package icu.fangkehou.dapr.feign;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+
 import feign.Feign;
 import feign.Headers;
 import feign.RequestLine;
@@ -24,14 +32,7 @@ import feign.Response;
 import io.dapr.client.DaprClient;
 import io.dapr.client.domain.InvokeBindingRequest;
 import io.dapr.utils.TypeRef;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 public class DaprFeignClientBindingTest {

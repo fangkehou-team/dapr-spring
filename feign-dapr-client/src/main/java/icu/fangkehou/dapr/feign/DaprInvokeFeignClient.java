@@ -16,6 +16,16 @@
 
 package icu.fangkehou.dapr.feign;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.charset.Charset;
+import java.time.Duration;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+
 import feign.Client;
 import feign.Request;
 import feign.Response;
@@ -27,16 +37,6 @@ import io.dapr.client.domain.InvokeBindingRequest;
 import io.dapr.client.domain.InvokeMethodRequest;
 import io.dapr.utils.TypeRef;
 import reactor.core.publisher.Mono;
-
-import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.charset.Charset;
-import java.time.Duration;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
  * This module directs Feign's requests to <a href="https://dapr.io/">Dapr</a>, which is a microservice framework. Ex.

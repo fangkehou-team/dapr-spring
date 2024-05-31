@@ -16,8 +16,11 @@
 
 package icu.fangkehou.dapr.client.test;
 
-import icu.fangkehou.dapr.client.config.DaprClientConfig;
-import io.dapr.client.DaprClient;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +28,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import icu.fangkehou.dapr.client.config.DaprClientConfig;
+import io.dapr.client.DaprClient;
 
 @SpringBootTest(properties = {
         "dapr.client.sidecar-ip=102.102.102.102",

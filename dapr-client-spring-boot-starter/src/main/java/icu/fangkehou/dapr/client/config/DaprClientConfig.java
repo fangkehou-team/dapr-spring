@@ -16,16 +16,17 @@
 
 package icu.fangkehou.dapr.client.config;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.DeprecatedConfigurationProperty;
-import org.springframework.boot.convert.DurationUnit;
-
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.DeprecatedConfigurationProperty;
+import org.springframework.boot.convert.DurationUnit;
+
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * The properties for creating dapr client.

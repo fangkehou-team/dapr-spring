@@ -16,9 +16,10 @@
 
 package icu.fangkehou.dapr.client.test;
 
-import icu.fangkehou.dapr.client.config.DaprClientConfig;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
+import icu.fangkehou.dapr.client.config.DaprClientConfig;
 
 /**
  * Dummy config - because Spring needs one.

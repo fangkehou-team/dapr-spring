@@ -16,9 +16,10 @@
 
 package icu.fangkehou.test.daprtest.feign;
 
-import icu.fangkehou.dapr.feign.annotation.UseDaprClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import icu.fangkehou.dapr.feign.annotation.UseDaprClient;
 
 @FeignClient(name = "dapr", url = "method.myApp")
 @UseDaprClient
