@@ -14,7 +14,22 @@
  * limitations under the License.
  */
 
-package icu.fangkehou.dapr.feign;
+package icu.fangkehou.test.daprtest.config;
 
-public interface HelloRepository {
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public class DaprSecretConfigTest {
+
+    @Value("${icu.fangkehou.daprsecrettest}")
+    private Boolean testConfig;
+
+    public Boolean getTestConfig() {
+        return testConfig;
+    }
+
+    public void setTestConfig(Boolean testConfig) {
+        this.testConfig = testConfig;
+    }
 }

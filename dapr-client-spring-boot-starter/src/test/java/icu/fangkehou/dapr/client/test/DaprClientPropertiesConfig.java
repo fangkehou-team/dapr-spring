@@ -14,17 +14,16 @@
  * limitations under the License.
  */
 
-package icu.fangkehou.test.daprtest.feign;
+package icu.fangkehou.dapr.client.test;
 
-import icu.fangkehou.dapr.feign.annotation.UseDaprClient;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
+import icu.fangkehou.dapr.client.config.DaprClientConfig;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-@FeignClient(name = "dapr", url = "method.myApp")
-@UseDaprClient
-public interface DaprFeignTestClient {
-
-    @GetMapping("/create")
-    String getQuery();
-
+/**
+ * Dummy config - because Spring needs one.
+ */
+@SpringBootConfiguration
+@EnableConfigurationProperties(DaprClientConfig.class)
+public class DaprClientPropertiesConfig {
 }

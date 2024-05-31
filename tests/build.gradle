@@ -34,6 +34,7 @@ dependencies {
 
 	implementation project(":dapr-client-spring-boot-starter")
 	implementation project(":dapr-openfeign-spring-boot-starter")
+	implementation project(":dapr-secretstore-spring-boot-starter")
 }
 
 dependencyManagement {

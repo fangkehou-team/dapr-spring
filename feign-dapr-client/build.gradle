@@ -12,7 +12,11 @@ dependencies {
     api("io.github.openfeign:feign-core")
 
     testImplementation 'io.github.openfeign:feign-jaxrs'
-    testImplementation 'io.github.openfeign:feign-core'
+    testImplementation('io.github.openfeign:feign-core') {
+        artifact {
+            classifier = 'tests'
+        }
+    }
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
