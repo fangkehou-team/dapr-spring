@@ -12,6 +12,7 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
     implementation project(':dapr-dependencies-spring-boot')
+    implementation project(':dapr-client-spring-boot-starter')
     implementation 'org.springframework.cloud:spring-cloud-commons'
     implementation 'org.springframework.cloud:spring-cloud-context'
 

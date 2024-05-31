@@ -16,18 +16,19 @@
 
 package icu.fangkehou.dapr.secretstore.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * The properties for creating dapr client.
  */
 @ToString
 @EqualsAndHashCode
-@ConfigurationProperties("dapr.secretstore")
+@ConfigurationProperties(DaprSecretStoreConfig.PROPERTY_PREFIX)
 public class DaprSecretStoreConfig {
+
+    public static final String PROPERTY_PREFIX = "dapr.secretstore";
 
     /**
      * enable secret store or not

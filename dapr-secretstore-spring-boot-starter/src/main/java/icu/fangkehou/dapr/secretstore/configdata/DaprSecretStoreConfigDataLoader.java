@@ -16,12 +16,10 @@
 
 package icu.fangkehou.dapr.secretstore.configdata;
 
-import static org.springframework.boot.context.config.ConfigData.Option.*;
-
-import java.io.IOException;
-import java.time.Duration;
-import java.util.*;
-
+import icu.fangkehou.dapr.secretstore.config.DaprClientSecretStoreConfigManager;
+import icu.fangkehou.dapr.secretstore.config.DaprSecretStoreConfig;
+import icu.fangkehou.dapr.secretstore.parser.DaprSecretStoreParserHandler;
+import io.dapr.client.DaprClient;
 import org.apache.commons.logging.Log;
 import org.springframework.boot.context.config.ConfigData;
 import org.springframework.boot.context.config.ConfigDataLoader;
@@ -29,19 +27,24 @@ import org.springframework.boot.context.config.ConfigDataLoaderContext;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.boot.logging.DeferredLogFactory;
 import org.springframework.core.env.PropertySource;
-
-import icu.fangkehou.dapr.secretstore.config.DaprSecretStoreConfig;
-import icu.fangkehou.dapr.secretstore.parser.DaprSecretStoreParserHandler;
-import io.dapr.client.DaprClient;
 import reactor.core.publisher.Mono;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import static org.springframework.boot.context.config.ConfigData.Option.*;
 
 public class DaprSecretStoreConfigDataLoader implements ConfigDataLoader<DaprSecretStoreConfigDataResource> {
 
     private final Log log;
 
-    private final DaprClient daprClient;
+    private DaprClient daprClient;
 
-    private final DaprSecretStoreConfig daprSecretStoreConfig;
+    private DaprSecretStoreConfig daprSecretStoreConfig;
 
     public DaprSecretStoreConfigDataLoader(DeferredLogFactory logFactory, DaprClient daprClient,
             DaprSecretStoreConfig daprSecretStoreConfig) {
@@ -63,6 +66,12 @@ public class DaprSecretStoreConfigDataLoader implements ConfigDataLoader<DaprSec
     @Override
     public ConfigData load(ConfigDataLoaderContext context, DaprSecretStoreConfigDataResource resource)
             throws IOException, ConfigDataResourceNotFoundException {
+        DaprClientSecretStoreConfigManager daprClientSecretStoreConfigManager =
+                getBean(context, DaprClientSecretStoreConfigManager.class);
+
+        daprClient = DaprClientSecretStoreConfigManager.getDaprClient();
+        daprSecretStoreConfig = daprClientSecretStoreConfigManager.getDaprSecretStoreConfig();
+
         if (resource.getSecretName() == null) {
             return fetchConfig(resource.getStoreName());
         } else {
@@ -73,7 +82,8 @@ public class DaprSecretStoreConfigDataLoader implements ConfigDataLoader<DaprSec
     private ConfigData fetchConfig(String storeName) {
         Mono<Map<String, Map<String, String>>> secretMapMono = daprClient.getBulkSecret(storeName);
 
-        Map<String, Map<String, String>> secretMap = secretMapMono.block(Duration.ofMillis(2000));
+        Map<String, Map<String, String>> secretMap =
+                secretMapMono.block(Duration.ofMillis(daprSecretStoreConfig.getTimeout()));
 
         if (secretMap == null) {
             return new ConfigData(Collections.emptyList(), IGNORE_IMPORTS, IGNORE_PROFILES, PROFILE_SPECIFIC);
@@ -92,7 +102,7 @@ public class DaprSecretStoreConfigDataLoader implements ConfigDataLoader<DaprSec
     private ConfigData fetchConfig(String storeName, String secretName) {
         Mono<Map<String, String>> secretMapMono = daprClient.getSecret(storeName, secretName);
 
-        Map<String, String> secretMap = secretMapMono.block();
+        Map<String, String> secretMap = secretMapMono.block(Duration.ofMillis(daprSecretStoreConfig.getTimeout()));
 
         if (secretMap == null) {
             return new ConfigData(Collections.emptyList(), IGNORE_IMPORTS, IGNORE_PROFILES, PROFILE_SPECIFIC);
@@ -102,5 +112,12 @@ public class DaprSecretStoreConfigDataLoader implements ConfigDataLoader<DaprSec
                 DaprSecretStoreParserHandler.getInstance().parseDaprSecretStoreData(secretName, secretMap));
 
         return new ConfigData(sourceList, IGNORE_IMPORTS, IGNORE_PROFILES, PROFILE_SPECIFIC);
+    }
+
+    protected <T> T getBean(ConfigDataLoaderContext context, Class<T> type) {
+        if (context.getBootstrapContext().isRegistered(type)) {
+            return context.getBootstrapContext().get(type);
+        }
+        return null;
     }
 }
