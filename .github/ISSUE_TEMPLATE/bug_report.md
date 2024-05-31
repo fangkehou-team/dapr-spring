@@ -32,8 +32,8 @@ Steps to reproduce the behavior:
 
 Which versions do you use?
 * Spring (boot):
-* grpc-java:
-* grpc-spring-boot-starter:
+* dapr sdk-java:
+* dapr-spring-boot-starter:
 * java: version + architecture (64bit?)
 * Other relevant libraries...
 
