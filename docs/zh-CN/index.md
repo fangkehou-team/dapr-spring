@@ -45,7 +45,7 @@ __请注意：__
   <dependency>
       <groupId>icu.fangkehou</groupId>
       <artifactId>dapr-spring-boot-starter</artifactId>
-      <version>0.3.0-SNAPSHOT</version>
+      <version>0.4.0-SNAPSHOT</version>
   </dependency>
   ```
 
@@ -53,7 +53,7 @@ __请注意：__
 
   ```groovy
   dependencies {
-      implementation 'icu.fangkehou:dapr-spring-boot-starter:0.3.0-SNAPSHOT'
+      implementation 'icu.fangkehou:dapr-spring-boot-starter:0.4.0-SNAPSHOT'
   }
   ```
 

@@ -14,7 +14,7 @@ TODO
 
 在 GitHub 上创建问题/提问并不难，但你可以稍微努力帮助我们更快地解决您的 个问题。
 
-如果您的问题/疑问一般都是关于 grpc 的问题，请考虑在 [grpc-java](https://github.com/grpc/grpc-java) 上提问。
+如果您的问题/疑问一般都是关于 dapr 的问题，请考虑在 [dapr-java](https://github.com/dapr/java-sdk) 上提问。
 
 使用提供的模板来创建新问题，其中包含我们需要的必需/有用信息的部分。
 
