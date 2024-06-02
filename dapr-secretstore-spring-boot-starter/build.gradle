@@ -13,8 +13,8 @@ dependencies {
 
     implementation project(':dapr-dependencies-spring-boot')
     implementation project(':dapr-client-spring-boot-starter')
-    implementation 'org.springframework.cloud:spring-cloud-commons'
-    implementation 'org.springframework.cloud:spring-cloud-context'
+    compileOnly 'org.springframework.cloud:spring-cloud-commons'
+    compileOnly 'org.springframework.cloud:spring-cloud-context'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

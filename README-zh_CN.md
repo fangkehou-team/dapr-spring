@@ -8,4 +8,12 @@ Dapr SpringBoot Starter - 让Dapr Java开发像Spring Cloud一样优雅.
 
 ## 功能
 
-TODO
+- 自动注入 DaprClient、 DaprPreviewClient
+- 在 Spring Boot 中设置 DaprClient 参数
+- 与OpenFeign集成
+- 远程配置引入（介于当前 `Dapr 应用配置功能` 只在 `DaprPreviewClient` 中提供，目前只支持引入 `Dapr 密钥存储`）
+
+
+## 使用
+
+请参考 [项目文档](https://dapr-spring.fangkehou.icu) 获得相关信息

@@ -11,7 +11,7 @@ dependencies {
     api("io.dapr:dapr-sdk:${daprVersion}")
     api("io.dapr:dapr-sdk-springboot3:${daprVersion}")
 
-    api('org.springframework.boot:spring-boot-starter')
+    compileOnly('org.springframework.boot:spring-boot-starter')
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

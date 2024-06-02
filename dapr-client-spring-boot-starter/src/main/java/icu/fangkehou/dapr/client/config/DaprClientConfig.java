@@ -61,7 +61,7 @@ public class DaprClientConfig {
     /**
      * Dapr's default timeout in seconds.
      */
-    private static final Duration DEFAULT_API_TIMEOUT = Duration.ofMillis(0L);
+    private static final Duration DEFAULT_API_TIMEOUT = Duration.ofMillis(2000L);
 
     /**
      * Dapr's default use of gRPC or HTTP.
@@ -132,7 +132,7 @@ public class DaprClientConfig {
     String grpcEndpoint;
 
     /**
-     * GRPC endpoint for remote sidecar connectivity.
+     * HTTP endpoint for remote sidecar connectivity.
      */
     String httpEndpoint;
 
@@ -187,16 +187,6 @@ public class DaprClientConfig {
      * Dapr's maximum number of idle connections for HTTP connection pool.
      */
     Integer httpClientMaxIdleConnections;
-
-    /**
-     * Dapr's timeout in milliseconds for wait sidecar to be online.
-     */
-    Integer sidecarConnectWaitMillis;
-
-    /**
-     * Dapr's value for if always wait dapr sidecar to be online.
-     */
-    Boolean sidecarConnectAlwaysRetry;
 
 
     public String getSidecarIp() {
@@ -320,21 +310,5 @@ public class DaprClientConfig {
 
     public void setHttpClientMaxIdleConnections(Integer httpClientMaxIdleConnections) {
         this.httpClientMaxIdleConnections = httpClientMaxIdleConnections;
-    }
-
-    public Integer getSidecarConnectWaitMillis() {
-        return sidecarConnectWaitMillis == null ? DEFAULT_SIDECAR_CONNECT_WAIT_MILLIS : sidecarConnectWaitMillis;
-    }
-
-    public void setSidecarConnectWaitMillis(Integer sideCarConnectWaitMillis) {
-        this.sidecarConnectWaitMillis = sideCarConnectWaitMillis;
-    }
-
-    public Boolean getSidecarConnectAlwaysRetry() {
-        return sidecarConnectAlwaysRetry == null ? DEFAULT_SIDECAR_CONNECT_ALWAYS_RETRY : sidecarConnectAlwaysRetry;
-    }
-
-    public void setSidecarConnectAlwaysRetry(Boolean sideCarConnectAlwaysRetry) {
-        this.sidecarConnectAlwaysRetry = sideCarConnectAlwaysRetry;
     }
 }

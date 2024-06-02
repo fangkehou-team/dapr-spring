@@ -91,18 +91,6 @@
       "type": "java.lang.Integer",
       "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
       "description": "Dapr's default maximum number of idle connections for HTTP connection pool."
-    },
-    {
-      "name": "dapr.client.sidecar-connect-wait-millis",
-      "type": "java.lang.Integer",
-      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
-      "description": "Dapr's timeout in milliseconds for wait sidecar to be online."
-    },
-    {
-      "name": "dapr.client.sidecar-connect-always-retry",
-      "type": "java.lang.Boolean",
-      "sourceType": "icu.fangkehou.dapr.client.config.DaprClientConfig",
-      "description": "Dapr's value for if always wait dapr sidecar to be online."
     }
   ],
   "hints": [

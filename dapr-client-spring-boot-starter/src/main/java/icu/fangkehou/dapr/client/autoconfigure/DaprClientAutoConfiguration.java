@@ -55,20 +55,24 @@ public class DaprClientAutoConfiguration {
         SetupDaprPropertyUtil.setupDaprSystemProperty(daprClientConfig);
 
         DaprClient daprClient = new DaprClientBuilder().build();
-        waitForDaprClient(daprClient, daprClientConfig.getSidecarConnectWaitMillis(),
-                daprClientConfig.getSidecarConnectAlwaysRetry());
+        waitForDaprClient(daprClient, (int) daprClientConfig.getTimeout().toMillis(),
+                daprClientConfig.getMaxRetries());
 
         return daprClient;
     }
 
-    void waitForDaprClient(DaprClient daprClient, Integer waitTime, Boolean alwaysWait) {
+    void waitForDaprClient(DaprClient daprClient, Integer waitTime, Integer maxRetry) {
         Mono<Void> result = daprClient.waitForSidecar(waitTime);
+
+        int tempMaxRetry = maxRetry - 1;
 
         try {
             result.block();
         } catch (RuntimeException e) {
-            if (alwaysWait) {
-                waitForDaprClient(daprClient, waitTime, alwaysWait);
+            if (tempMaxRetry == -1) {
+                waitForDaprClient(daprClient, waitTime, maxRetry);
+            } else if (tempMaxRetry != 0) {
+                waitForDaprClient(daprClient, waitTime, tempMaxRetry);
             } else {
                 throw e;
             }
