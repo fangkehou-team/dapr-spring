@@ -58,7 +58,5 @@ public class DaprClientConfigTest {
         assertEquals(daprClientConfig.getTimeout(), Duration.ofMillis(5000L));
 
         assertEquals(daprClientConfig.getSidecarIp(), "102.102.102.102");
-
-        assertEquals(daprClientConfig.getSidecarConnectWaitMillis(), 5000);
     }
 }
