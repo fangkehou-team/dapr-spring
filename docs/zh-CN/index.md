@@ -7,7 +7,7 @@ Dapr-Spring-Boot-Starter 将 [Dapr](https://dapr.io) 与 [Spring Boot 进行整�
 
 __请注意：__
 
-本项目并没有重写Dapr Java SDK甚至官方Dapr Spring Boot工件的任何逻辑，仅为其增强了Spring Boot的使用体验，您可能需要参阅[Dapr Java SDK | Dapr 文档库](https://docs.dapr.io/zh-hans/developing-applications/sdks/java/)来了解Dapr Client以及官方Dapr Spring Boot工件的使用方法（如Pubsub等）
+本项目并没有重写Dapr Java SDK甚至官方Dapr Spring Boot工件的任何逻辑，仅为其增强了Spring Boot的使用体验，您可能需要参阅[Dapr Java SDK](https://docs.dapr.io/zh-hans/developing-applications/sdks/java/)来了解Dapr Client以及官方Dapr Spring Boot工件的使用方法（如Pubsub等）
 
 
 
