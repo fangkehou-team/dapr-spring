@@ -157,11 +157,14 @@ public class DaprInvokeFeignClient implements Client {
     private Mono<byte[]> getResultFromInvokeBindingRequest(URI uri, Request request) throws IOException {
         String[] splitSchemaAndHost = uri.getHost().split(DOT);
 
+        List<String> hostList = new ArrayList<>(List.of(splitSchemaAndHost));
+        hostList.remove(0);
+
         InvokeBindingRequest invokeBindingRequest = null;
         try {
             invokeBindingRequest = toInvokeBindingRequest(new URI("binding",
                     uri.getUserInfo(),
-                    String.join(".", new ArrayList<>(List.of(splitSchemaAndHost)).remove(0)),
+                    String.join(".", hostList),
                     uri.getPort(),
                     uri.getPath(),
                     uri.getQuery(),
