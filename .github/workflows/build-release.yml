@@ -1,10 +1,5 @@
 name: Build master branch
 
-on:
-  push:
-    branches:
-      - master
-
 jobs:
   build:
     name: Build on java ${{ matrix.java }}
@@ -35,8 +30,9 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew --scan --stacktrace --warning-mode=all build
 
-      - name: Deploy to Github with Gradle
+      - name: Deploy to Maven Central with Gradle
         if: ${{ matrix.java == '17' }}
-        run: ./gradlew --scan publishAllPublicationsToGitHubPackagesRepository -x check -Psigning.gnupg.executable=gpg -Psigning.gnupg.keyName=${{ secrets.GPG_NAME }} -Psigning.gnupg.passphrase=${{ secrets.GPG_PASSWORD }}
+        run: ./gradlew --scan publishAllPublicationsToMavenCentralRepository -x check -Psigning.gnupg.executable=gpg -Psigning.gnupg.keyName=${{ secrets.GPG_NAME }} -Psigning.gnupg.passphrase=${{ secrets.GPG_PASSWORD }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OSSRH_USER: ${{ secrets.OSSRH_USER }}
+          OSSRH_PASS: ${{ secrets.OSSRH_PASS }}
