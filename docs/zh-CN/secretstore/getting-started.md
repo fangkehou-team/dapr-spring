@@ -66,13 +66,14 @@ spring:
 spring.config.import = dapr:secret:mysecret/secret
 ```
 
-其中dapr:secret:为dapr secret store配置的固定字段，后方的mysecret/secret为用户配置的secret位置，格式为`[Secret Store Name]/[Secret Name]`，也可以只提供Secret Store Name，此时Dapr Client将获取该Secret Store下的所有Secret，此时secret位置格式为`[Secret Store Name]`
+其中dapr:secret:为dapr secret store配置的固定字段，后方的mysecret/secret为用户配置的secret位置，格式为`[Secret Store Name]/[Secret Name]`，也可以只提供Secret Store Name，此时Dapr Client将使用Bulk模式获取该Secret Store下的所有Secret，此时secret位置格式为`[Secret Store Name]`
 
 > __请注意：为了避免解析失败，请不要在secret位置的首尾及中间位置额外添加任何字符（如"/"，":"）__
 
 本工件解析Dapr Secret Store的方式是将Secret Store配置转换为Spring Boot Properties格式的字符串进行解析，所以在配置Secret Store时，请将机密key存储为类似`spring.mysql.username`的格式。
 
 > __请注意：如果为Secret为嵌套格式，如localfile模式中使用json并嵌套超过两层时，需要将`nestedSeparator`设定为`.`。__
+> __普通获取模式需要将multiValued设置为true，如果您的Secret Store实现并不支持multiValue，请使用Bulk模式获取Secret。__
 
 值得注意的是，由于配置引入的过程是在Bootstrap阶段进行的，此时Spring IOC并没有开始进行批量的Bean创建过程，所以无法通过在Application Configuration中指定`@Bean`来实现对DaprClient的注入。
 
