@@ -62,4 +62,3 @@ services:
     image: 'rabbitmq:3-management-alpine'
     networks:
       - dapr-demo
-

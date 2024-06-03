@@ -18,7 +18,6 @@ package org.springframework.cloud.openfeign;
 
 import java.lang.reflect.Method;
 
-import icu.fangkehou.dapr.client.config.DaprClientConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -30,6 +29,7 @@ import org.springframework.context.annotation.*;
 
 import feign.Feign;
 import feign.Target;
+import icu.fangkehou.dapr.client.config.DaprClientConfig;
 import icu.fangkehou.dapr.feign.DaprInvokeFeignClient;
 import icu.fangkehou.dapr.feign.targeter.DaprClientTargeter;
 import io.dapr.client.DaprClient;
@@ -51,7 +51,8 @@ public class DaprFeignClientOpenFeignAutoConfiguration {
         @Bean
         @ConditionalOnMissingBean
         public Targeter feignTargeter(DaprClient daprClient, DaprClientConfig daprClientConfig) {
-            return new DaprClientTargeter(new DaprInvokeFeignClient(daprClient, (int) daprClientConfig.getTimeout().toMillis(), daprClientConfig.getMaxRetries()));
+            return new DaprClientTargeter(new DaprInvokeFeignClient(daprClient,
+                    (int) daprClientConfig.getTimeout().toMillis(), daprClientConfig.getMaxRetries()));
         }
 
     }
@@ -64,7 +65,8 @@ public class DaprFeignClientOpenFeignAutoConfiguration {
         @Bean
         @ConditionalOnMissingBean(CircuitBreakerFactory.class)
         public Targeter defaultFeignTargeter(DaprClient daprClient, DaprClientConfig daprClientConfig) {
-            return new DaprClientTargeter(new DaprInvokeFeignClient(daprClient, (int) daprClientConfig.getTimeout().toMillis(), daprClientConfig.getMaxRetries()));
+            return new DaprClientTargeter(new DaprInvokeFeignClient(daprClient,
+                    (int) daprClientConfig.getTimeout().toMillis(), daprClientConfig.getMaxRetries()));
         }
 
         @Bean
