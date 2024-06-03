@@ -6,7 +6,7 @@ This section describes how you can configure your dapr-openfeign-spring-boot-sta
 
 This artifact relies on dapr-client-spring-boot-starter, please refer to [Dapr Client Spring Boot Starter Configuration](../client/configuration.md) for its configuration.
 
-In the current version, we do not provide separate settings for the openfeign client; all parameters use the openfeign settings. You can refer to the openfeign documentation to configure the client.
+In the current version, we do not provide separate settings for the openfeign client; all parameters use the dapr-client-spring-boot-starter settings. You can refer to the documentation above to configure the client.
 
 ----------
 
