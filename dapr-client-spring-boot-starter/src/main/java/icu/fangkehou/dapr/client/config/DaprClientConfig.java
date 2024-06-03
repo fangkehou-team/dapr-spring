@@ -56,7 +56,7 @@ public class DaprClientConfig {
     /**
      * Dapr's default max retries.
      */
-    private static final Integer DEFAULT_API_MAX_RETRIES = 0;
+    private static final Integer DEFAULT_API_MAX_RETRIES = 5;
 
     /**
      * Dapr's default timeout in seconds.

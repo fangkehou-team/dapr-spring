@@ -1,0 +1,60 @@
+services:
+  #Infrastructure
+  dapr-demo-zipkin:
+    ports:
+      - "35411:9411"
+
+  #Applications
+  dapr-demo-spring:
+    ports:
+      - "35210:8080"
+
+
+  dapr-demo-spring-dapr:
+    command: [ "./daprd",
+               "-app-id", "dapr-demo-spring",
+               "-app-port", "8080",
+               "--dapr-http-read-buffer-size", "16",
+               "-components-path", "/components",
+               "-config", "/configuration/recall-configuration.yaml"
+    ]
+    volumes:
+      - "./infrastructure/dapr/components/:/components"
+      - "./infrastructure/dapr/configuration/:/configuration"
+
+  dapr-demo-spring-client:
+    ports:
+      - "35220:8080"
+
+  dapr-demo-spring-client-dapr:
+    command: [ "./daprd",
+               "-app-id", "dapr-demo-spring-client",
+               "-app-port", "8080",
+               "--dapr-http-read-buffer-size", "16",
+               "-components-path", "/components",
+               "-config", "/configuration/recall-configuration.yaml"
+    ]
+    volumes:
+      - "./infrastructure/dapr/components/:/components"
+      - "./infrastructure/dapr/configuration/:/configuration"
+
+  #Data Storage and Message
+  dapr-demo-postgres:
+    environment:
+      - 'POSTGRES_DB=dapr-demo_reading'
+      - 'POSTGRES_PASSWORD=password'
+      - 'POSTGRES_USER=user'
+    ports:
+      - '35432:5432'
+    volumes:
+      - dapr-demo-postgres-data:/var/lib/postgresql/data
+
+  dapr-demo-rabbitmq:
+    ports:
+      - "35672:5672"
+      - "35673:15672"
+
+
+volumes:
+  dapr-demo-postgres-data:
+    external: false

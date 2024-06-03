@@ -1,0 +1,52 @@
+networks:
+  dapr-demo:
+
+services:
+  #Infrastructure
+  dapr-demo-zipkin:
+    image: openzipkin/zipkin-slim:latest
+    networks:
+      - dapr-demo
+
+  #Applications
+  dapr-demo-spring:
+    image: 'dapr-demo-spring'
+    build:
+      context: ./dapr-server-demo
+      dockerfile: Dockerfile
+    networks:
+      - dapr-demo
+
+  dapr-demo-spring-dapr:
+    image: "daprio/daprd:1.9.4"
+    network_mode: "service:dapr-demo-spring"
+    depends_on:
+      - dapr-demo-spring
+
+  dapr-demo-spring-client:
+    image: 'dapr-demo-spring'
+    build:
+      context: ./dapr-client-demo
+      dockerfile: Dockerfile
+    networks:
+      - dapr-demo
+
+  dapr-demo-spring-client-dapr:
+    image: "daprio/daprd:1.9.4"
+    network_mode: "service:dapr-demo-spring-client"
+    depends_on:
+      - dapr-demo-spring-client
+
+
+  #Data Storage and Message
+
+  dapr-demo-postgres:
+    image: 'postgres:16.2'
+    networks:
+      - dapr-demo
+
+  dapr-demo-rabbitmq:
+    image: 'rabbitmq:3-management-alpine'
+    networks:
+      - dapr-demo
+

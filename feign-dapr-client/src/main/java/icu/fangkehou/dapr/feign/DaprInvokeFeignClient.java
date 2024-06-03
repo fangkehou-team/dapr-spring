@@ -73,16 +73,29 @@ public class DaprInvokeFeignClient implements Client {
 
     private static final String DOT = "\\.";
 
+    private int retryTime;
+    private int waitTime;
+
     private final DaprClient daprClient;
 
     public DaprInvokeFeignClient() {
         daprClient = new DaprClientBuilder().build();
+        retryTime = 2000;
+        waitTime = 5;
     }
 
     public DaprInvokeFeignClient(DaprClient daprClient) {
         this.daprClient = daprClient;
+        retryTime = 2000;
+        waitTime = 5;
     }
 
+
+    public DaprInvokeFeignClient(DaprClient daprClient, int waitTime, int retryTime) {
+        this.daprClient = daprClient;
+        this.waitTime = waitTime;
+        this.retryTime = retryTime;
+    }
 
     @Override
     public Response execute(Request request, Request.Options options) throws IOException {
@@ -121,11 +134,14 @@ public class DaprInvokeFeignClient implements Client {
     private Mono<byte[]> getResultFromInvokeHTTPMethodRequest(URI uri, Request request) throws IOException {
         String[] splitSchemaAndHost = uri.getHost().split(DOT);
 
+        List<String> hostList = new ArrayList<>(List.of(splitSchemaAndHost));
+        hostList.remove(0);
+
         InvokeMethodRequest invokeMethodRequest = null;
         try {
             invokeMethodRequest = toInvokeMethodHTTPRequest(new URI("method",
                     uri.getUserInfo(),
-                    String.join(".", new ArrayList<>(List.of(splitSchemaAndHost)).remove(0)),
+                    String.join(".", hostList),
                     uri.getPort(),
                     uri.getPath(),
                     uri.getQuery(),
@@ -253,18 +269,25 @@ public class DaprInvokeFeignClient implements Client {
     }
 
     private Response.Body toResponseBody(Mono<byte[]> response, Request.Options options) throws IOException {
-        byte[] result;
+        byte[] result = new byte[0];
 
-        try {
-            result = response.block(Duration.of(options.connectTimeoutMillis() + options.readTimeoutMillis(),
-                    TimeUnit.MILLISECONDS.toChronoUnit()));
+        for (int count = 0; count < retryTime; count++) {
+            try {
+                result = response.block(Duration.of(waitTime,
+                        TimeUnit.MILLISECONDS.toChronoUnit()));
 
-            if (result == null) {
-                result = new byte[0];
+                if (result == null) {
+                    result = new byte[0];
+                }
+
+                break;
+            } catch (RuntimeException e) {
+                if (retryTime == count + 1) {
+                    throw new IOException("Can not get Response", e);
+                }
             }
-        } catch (RuntimeException e) {
-            throw new IOException("Can not get Response", e);
         }
+
 
         byte[] finalResult = result;
         return new Response.Body() {

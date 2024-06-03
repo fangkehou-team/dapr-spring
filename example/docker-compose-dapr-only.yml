@@ -1,0 +1,31 @@
+networks:
+  dapr-demo:
+
+services:
+  #Infrastructure
+  dapr-demo-zipkin:
+    image: openzipkin/zipkin-slim:latest
+    networks:
+      - dapr-demo
+
+  dapr-demo-spring-standalone-dapr:
+    image: "daprio/daprd:1.9.4"
+    ports:
+      - "3500:3500"
+      - "50001:50001"
+    command: [ "./daprd",
+               "--app-id", "dapr-demo-spring",
+               "--dapr-http-read-buffer-size", "16",
+               "-components-path", "/components",
+               "-config", "/configuration/recall-configuration.yaml"
+    ]
+    volumes:
+      - "./infrastructure/dapr/components/:/components"
+      - "./infrastructure/dapr/configuration/:/configuration"
+    networks:
+      - dapr-demo
+
+  dapr-demo-rabbitmq:
+    image: 'rabbitmq:3-management-alpine'
+    networks:
+      - dapr-demo

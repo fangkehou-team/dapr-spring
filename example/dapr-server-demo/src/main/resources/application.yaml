@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: dapr-server-demo
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  # username and password of datasource is located at dapr secret store
+  datasource:
+    url: jdbc:postgresql://dapr-demo-postgres:5432/postgres
+    driver-class-name: org.postgresql.Driver
+
+  # import database secrets
+  config:
+    import: dapr:secret:intellij-secretstore/ServerSecrets
