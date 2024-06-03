@@ -36,7 +36,7 @@ jobs:
 
       - name: Deploy to Maven Central with Gradle
         if: ${{ matrix.java == '17' }}
-        run: ./gradlew --scan publishAllPublicationsToMavenCentralRepository -x check -Psigning.gnupg.executable=gpg -Psigning.gnupg.keyName=${{ secrets.GPG_NAME }} -Psigning.gnupg.passphrase=${{ secrets.GPG_PASSWORD }}
+        run: ./gradlew --scan publishAllPublicationsToMavenCentralRepository -x check -Psigning.gnupg.executable=gpg -Psigning.gnupg.keyName=${{ secrets.GPG_NAME }} -Psigning.gnupg.passphrase=${{ secrets.GPG_PASSWORD }} -PmavenCentralUsername=${{ secrets.OSSRH_USER }} -PmavenCentralPassword=${{ secrets.OSSRH_PASS }}
         env:
           OSSRH_USER: ${{ secrets.OSSRH_USER }}
           OSSRH_PASS: ${{ secrets.OSSRH_PASS }}

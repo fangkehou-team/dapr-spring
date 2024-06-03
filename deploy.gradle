@@ -87,9 +87,6 @@ publishing {
     }
 }
 
-mavenCentralUsername = System.getenv("OSSRH_USER")
-mavenCentralPassword = System.getenv("OSSRH_PASS")
-
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
 
