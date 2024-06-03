@@ -26,9 +26,9 @@ dependencies {
 }
 ```
 
-___Please note: The above version number may be outdated, please ensure you are using the latest version. Components may require you to introduce additional dependencies.___
+> ___Please note: The above version number may be outdated, please ensure you are using the latest version. Components may require you to introduce additional dependencies.___
 
-___For details, see [Version Overview](../versions.md)___
+> ___For details, see [Version Overview](../versions.md)___
 
 __JitPack__
 
@@ -46,9 +46,9 @@ dependencies {
 }
 ```
 
-___Please note: The above version number may be outdated, please ensure you are using the latest SNAPSHOT version. Components may require you to introduce additional dependencies.___
+> ___Please note: The above version number may be outdated, please ensure you are using the latest SNAPSHOT version. Components may require you to introduce additional dependencies.___
 
-___For details, see [Version Overview](../versions.md)___
+> ___For details, see [Version Overview](../versions.md)___
 
 ## Basic Usage
 

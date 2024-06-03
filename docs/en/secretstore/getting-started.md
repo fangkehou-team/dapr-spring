@@ -26,9 +26,9 @@ dependencies {
 }
 ```
 
-___Please note: The above version number may be outdated, ensure you are using the latest version. Components may require you to introduce additional dependencies.___
+> ___Please note: The above version number may be outdated, ensure you are using the latest version. Components may require you to introduce additional dependencies.___
 
-___For details, see [Version Overview](../versions.md)___
+> ___For details, see [Version Overview](../versions.md)___
 
 __JitPack__
 
@@ -46,9 +46,9 @@ dependencies {
 }
 ```
 
-___Please note: The above version number may be outdated, ensure you are using the latest SNAPSHOT version. Components may require you to introduce additional dependencies.___
+> ___Please note: The above version number may be outdated, ensure you are using the latest SNAPSHOT version. Components may require you to introduce additional dependencies.___
 
-___For details, see [Version Overview](../versions.md)___
+> ___For details, see [Version Overview](../versions.md)___
 
 ## Basic Usage
 
@@ -68,7 +68,11 @@ spring.config.import = dapr:secret:mysecret/secret
 
 Where `dapr:secret:` is the fixed field for the dapr secret store configuration, and the subsequent `mysecret/secret` is the user-configured secret location, formatted as `[Secret Store Name]/[Secret Name]`. You can also provide only the Secret Store Name, in which case the Dapr Client will retrieve all Secrets under that Secret Store, with the secret location formatted as `[Secret Store Name]`.
 
-__Please note: To avoid parsing failures, do not add any extra characters (such as "/", ":") at the beginning, end, or middle of the secret location.__
+> __Please note: To avoid parsing failures, do not add any extra characters (such as "/", ":") at the beginning, end, or middle of the secret location.__
+
+The document translates the Dapr Secret Store by converting the Secret Store configuration into a string in the Spring Boot Properties format for parsing. Therefore, when configuring the Secret Store, please store the secret key in a format similar to `spring.mysql.username`.
+
+> __Please note: If the Secret is in a nested format, such as using json in localfile mode and nesting more than two layers, you need to set the `nestedSeparator` to `.`.__
 
 It's important to note that since the configuration import process occurs during the Bootstrap phase, when the Spring IOC has not yet begun the batch Bean creation process, it is not possible to inject DaprClient by specifying `@Bean` in the Application Configuration.
 

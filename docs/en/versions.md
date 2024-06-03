@@ -6,7 +6,7 @@ This page provides information about the versioning strategy and lifecycle.
 
 ## Current Version
 
->__Note: The current project is still in the Alpha stage. The API has not been completely finalized, and various issues may arise. Please upgrade to the latest version as much as possible when using it.__
+> __Note: The current project is still in the Alpha stage. The API has not been completely finalized, and various issues may arise. Please upgrade to the latest version as much as possible when using it.__
 
 The latest version hosted on JitPack and Maven Central is as follows:
 
