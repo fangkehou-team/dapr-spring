@@ -83,6 +83,8 @@ feign-dapr-client是独立于Spring Boot的工件，没有引入dapr-spring-boot
 
 至于响应，结果代码始终是200 OK，如果客户端遇到任何错误，它将抛出一个IOException。
 
+当前，我们无法从服务器获取元数据，因为Dapr客户端没有这样做的方法，所以HTTP响应头将为空。如果请求中设置了Accept请求头，那么在响应中将创建一个假的Content-Type响应头，并且它将是Accept请求头的第一个值。
+
 ## 其他
 
 请参阅[主页](../index.md)中的其他条目来获取更多使用方式，请参阅[配置](configuration.md)条目对参数进行配置。

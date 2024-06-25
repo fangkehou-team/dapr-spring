@@ -83,6 +83,8 @@ For invokeBinding, the URL also contains two types of information: the host is t
 
 As for the response, the result code is always 200 OK. If the client encounters any errors, it will throw an IOException.
 
+Currently, we have no method to gain metadata from server as Dapr Client doesn't have methods to do that, so headers will be blank. If Accept header has set in request, a fake Content-Type header will be created in response, and it will be the first value of Accept header.
+
 ## Other
 
 For more usage methods, please refer to other entries in the [homepage](../index.md), and consult the [configuration](configuration.md) entry to configure parameters.
