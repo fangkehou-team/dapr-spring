@@ -63,7 +63,9 @@ import reactor.core.publisher.Mono;
  * You can put some metadata into the Header of your Feign Request, the Client will handle them.
  * <p>
  * As for response, the result code is always 200 OK, and if client have met any error, it will throw an IOException for
- * that.
+ * that.<br>
+ * Currently, we have no method to gain metadata from server as Dapr Client doesn't have methods to do that, so headers will be blank.
+ * If Accept header has set in request, a fake Content-Type header will be created in response, and it will be the first value of Accept header.
  *
  * <pre>
  * MyAppData response = Feign.builder().client(new DaprFeignClient()).target(MyAppData.class,
@@ -123,10 +125,19 @@ public class DaprInvokeFeignClient implements Client {
             default -> throw new IOException("Schema '" + schema + "' is not supported");
         };
 
+        Map<String, Collection<String>> headerMap = new HashMap<>();
+
+        if (request.headers().containsKey("Accept")) {
+            headerMap.put("Content-Type", List.of(request.headers().get("Accept")
+                    .stream().findFirst()
+                    .orElseThrow(() -> new IOException("Accept header can not be null"))));
+        }
+
         return Response.builder()
                 .status(200)
                 .reason("OK")
                 .request(request)
+                .headers(headerMap)
                 .body(toResponseBody(result, options))
                 .build();
     }
