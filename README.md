@@ -1,3 +1,5 @@
+# I started this repository back in June 2024, when Dapr's Java SDK had pretty basic support for Spring Boot. Recently, while checking out the Java SDK source code, I noticed it now covers most of the features in this repository. Looks like it's time to archive this repo! As for the Cloud Config part, I'll tidy it up and submit a pull request to the official java sdk soon.
+
 README: [English](README.md) | [中文](README-zh_CN.md)
 
 # dapr-spring-boot
