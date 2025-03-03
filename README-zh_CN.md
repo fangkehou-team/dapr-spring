@@ -1,3 +1,5 @@
+#这个repository是我在2024年6月开始编写的，那个时候Dapr的java-sdk中对于SpringBoot的支持还比较简陋，近期在查阅java-sdk源码时突然发现java-sdk里已经实现了大部分这个repository里的功能，看来是时候让这个repository被archive了！关于Cloud Config的部分，我会在近期整理后提交相应的pull request到官方的java-sdk中。
+
 README: [English](README.md) | [中文](README-zh_CN.md)
 
 # dapr-spring-boot
